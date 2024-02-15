@@ -1,0 +1,16 @@
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner input=new Scanner (System.in);
+		String b="";
+		System.out.print("enter string: ");
+		String str=input.next();
+		int d=str.length();
+		for(int i=d-1;i>=0;i--)
+		{
+		    b=b+str.charAt(i);
+		}
+		System.out.print("reversed string is: "+b);
+	}
+}
