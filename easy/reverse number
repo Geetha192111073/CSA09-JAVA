@@ -1,0 +1,36 @@
+import java.util.*;
+public class Main 
+{
+    public static void main(String args[])
+    {
+        Scanner input=new Scanner(System.in);
+        try 
+        {
+        System.out.print("enter num: ");
+        int n=input.nextInt();
+        int rem=0,rev=0;
+        if(n<=0)
+        {
+            System.out.println("invalid input");
+        }
+        else
+        {
+        while(n!=0)
+        {
+            rem=n%10;
+            rev=rev*10+rem;
+            n=n/10;
+        }
+        System.out.println("reversed num is: "+rev);
+        }
+        }
+        catch(ArithmeticException e)
+        {
+            System.out.print(e.getMessage());
+        }
+        catch(Exception e)
+        {
+            System.out.print("invalid input");
+        }
+    }
+}
