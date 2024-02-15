@@ -1,0 +1,20 @@
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+	    Scanner input=new Scanner(System.in);
+		System.out.println("enter string: ");
+		String a=input.nextLine();
+		System.out.println("enter string to be checked: ");
+		String b=input.nextLine();
+		boolean r1=a.equals(b);
+		if(r1==true)
+		{
+		    System.out.print("valid");
+		}
+		else
+		{
+		    System.out.print("invalid");
+		}
+	}
+}
