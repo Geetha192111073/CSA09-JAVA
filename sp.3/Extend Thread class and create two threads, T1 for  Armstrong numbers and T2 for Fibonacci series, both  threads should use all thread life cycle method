@@ -1,0 +1,89 @@
+class Matrix {
+    private int[][] data;
+
+    public Matrix(int[][] data) {
+        this.data = data;
+    }
+
+    public int[][] getData() {
+        return data;
+    }
+}
+
+class MatrixAddition {
+    public static int[][] addMatrices(Matrix m1, Matrix m2) {
+        int[][] result = new int[3][3];
+        int[][] data1 = m1.getData();
+        int[][] data2 = m2.getData();
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                result[i][j] = data1[i][j] + data2[i][j];
+            }
+        }
+
+        return result;
+    }
+}
+
+class Thread1 extends Thread {
+    private Matrix matrix;
+
+    public Thread1(Matrix matrix) {
+        this.matrix = matrix;
+    }
+
+    @Override
+    public void run() {
+        // Perform some operations with the matrix
+    }
+}
+
+class Thread2 extends Thread {
+    private Matrix matrix;
+
+    public Thread2(Matrix matrix) {
+        this.matrix = matrix;
+    }
+
+    @Override
+    public void run() {
+        // Perform some operations with the matrix
+    }
+}
+
+class Thread3 extends Thread {
+    private Matrix matrix1;
+    private Matrix matrix2;
+
+    public Thread3(Matrix matrix1, Matrix matrix2) {
+        this.matrix1 = matrix1;
+        this.matrix2 = matrix2;
+    }
+
+    @Override
+    public void run() {
+        try {
+            // Wait for Thread4 to complete counting elements
+            Thread4 thread4 = new Thread4(matrix1, matrix2);
+            thread4.join();
+            // Perform matrix addition after Thread4 completes counting
+            int[][] result = MatrixAddition.addMatrices(matrix1, matrix2);
+            System.out.println("Matrix Addition Result:");
+            for (int[] row : result) {
+                for (int element : row) {
+                    System.out.print(element + " ");
+                }
+                System.out.println();
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+class Thread4 extends Thread {
+    private Matrix matrix1;
+    private Matrix matrix2;
+
+    public Thread4(Matrix matrix1, Ma
